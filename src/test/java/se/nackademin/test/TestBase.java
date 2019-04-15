@@ -3,29 +3,25 @@
 package se.nackademin.test;
 
 import static com.codeborne.selenide.Selenide.open;
+import java.util.logging.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeOptions;
+import se.nackademin.test.pages.NackademinSearchResultPage;
 
 
 public class TestBase {
+    
+    private static final Logger LOG = Logger.getLogger(TestBase.class.getName());
     
     public TestBase() {
     }
     
     @Before
     public void setUp() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("enable-automation");
-        options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-extensions");
-        options.addArguments("--dns-prefetch-disable");
-        options.addArguments("--disable-gpu");
-        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        LOG.info("open startpage");
         
         open("https://nackademin.se");
     }
